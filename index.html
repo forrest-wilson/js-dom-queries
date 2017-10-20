@@ -7,8 +7,103 @@
     <title>JS DOM Queries</title>
 </head>
 <body>
+    <ul id="shoppingList">
+        <li class="item">Apples</li>
+        <li class="item" id="butter">Butter</li>
+        <li class="item important">Milk</li>
+        <li class="item">Muesli</li>
+        <li class="item important">Yoghurt</li>
+    </ul>
     <script>
-    
+        // IIFE
+        (function() {
+            // Changes the text colour of the class passed to it
+            function importantColorChange(htmlClass, textColor) {
+
+                // Assigns the htmlClass perameter as a selector
+                var el = document.getElementsByClassName(htmlClass),
+
+                    // Gets the length of the element array
+                    elLength = el.length;
+                
+                // Checks to see whether the array has at least one item
+                if (elLength >= 1) {
+
+                    // Loop through the array
+                    for (i = 0; i < elLength; i++) {
+
+                        // Set the element at the index being looped through and assigns
+                        // the colour argument to the color css property
+                        el[i].style.color = textColor;
+
+                    }
+                // If the array has less than 1 item, run this code
+                } else {
+                    // Error handling
+                }
+            }
+
+            // Invokes the function and passes a class name (string) and color (string)
+            importantColorChange("important", "red");
+
+            // Changes the font weight of the class passed to it
+            function fontWeight(htmlClass, weight) {
+
+                // Assigns the htmlClass perameter as a selector
+                var el = document.getElementsByClassName(htmlClass),
+
+                    // Gets the length of the element array
+                    elLength = el.length;
+
+                // Checks to see whether the array has at least one item
+                if (elLength >= 1) {
+
+                    // Loop through the array
+                    for (i = 0; i < elLength; i++) {
+
+                        // Set the element at the index being looped through and assigns
+                        // the weight argument to the fontWeight css property
+                        el[i].style.fontWeight = weight;
+
+                    }
+                // If the array has less than 1 item, run this code
+                } else {
+                    // Error handling
+                }
+            }
+
+            // Invokes the function and passes a class name (string) and font weight (int)
+            fontWeight("item", 700);
+
+            // Changes the font size of the element ID passed to it
+            function changeFontSizeOnHover(htmlID, hoverSize) {
+
+                // Assigns the htmlID to an object
+                var el = document.getElementById(htmlID),
+
+                    // Gets the initial font size of the element
+                    initialFontSize = el.style.fontSize;
+
+                // When the mouse hovers OVER the htmlID, run this code
+                el.onmouseover = function() {
+
+                    // Change the font size to the size specified in the function invokation
+                    el.style.fontSize = hoverSize;
+                }
+                
+                // When the mouse hovers OUT of the htmlID, run this code
+                el.onmouseout = function() {
+
+                    // Change the font size property to it's initial font size using the
+                    // variable defined above
+                    el.style.fontSize = initialFontSize;
+                }
+            }
+
+            // Invokes the function and passes values to it
+            changeFontSizeOnHover("butter", "50px");
+
+        })(); // End of IIFE
     </script>
 </body>
 </html>
