@@ -37,7 +37,7 @@
                         el[i].style.color = textColor;
 
                     }
-                    
+
                 // If the array has less than 1 item, run this code
                 } else {
                     // Error handling
@@ -78,7 +78,7 @@
             fontWeight("item", 700);
 
             // Changes the font size of the element ID passed to it
-            function changeFontSizeOnHover(htmlID, hoverSize) {
+            function changeFontSizeOnHover(htmlID, hoverSize, speed) {
 
                 // Assigns the htmlID to an object
                 var el = document.getElementById(htmlID),
@@ -88,6 +88,8 @@
 
                 // When the mouse hovers OVER the htmlID, run this code
                 el.onmouseover = function() {
+                    // Changes the transition speed to make a smooth change in font size
+                    el.style.transition = speed;
 
                     // Change the font size to the size specified in the function invokation
                     el.style.fontSize = hoverSize;
@@ -103,7 +105,7 @@
             }
 
             // Invokes the function and passes values to it
-            changeFontSizeOnHover("butter", "50px");
+            changeFontSizeOnHover("butter", "50px", "300ms");
 
         })(); // End of IIFE
     </script>
